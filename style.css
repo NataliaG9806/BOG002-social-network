@@ -4,6 +4,16 @@
 body{
     margin: 0;
     padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+footer{
+  margin-top: auto;
+}
+.bigContainer{
+  width:100vw;
+  height:100vh;
 }
 .root-container{
   height:100vh;
@@ -47,7 +57,7 @@ body{
   z-index: 50;
   width:73vw;
   height: 70vh;
-  margin-top: 6vh;
+  margin-top: 12vh;
   background:#EAE6CA;
   left: 13vw;
   justify-content: center;
@@ -340,64 +350,29 @@ button.buttonInicioGoogle:hover{
   display: flex;
   margin-left: 12vw;
 }
-.prueba{
-  background: #ffffff;
-  width: 100vw;
-  height: 100%;
-  position: absolute;
-  background-image: url(assets/imagesIcon/texturamobile.png);
-  background-repeat: no-repeat;
-  background-size: 72% 80%;
-  background-position: right;
-  margin-top: 0;
-  z-index: 100;
+.popUpSignOut{
+  width: 75vw;
+  height: 20vh;
+  background:#0C244F;
+  Z-index:150;
+  font-family:'Roboto', sans-serif;
+  font-weight: 600;
+  position: relative;
+  margin-top: 30vh;
+  text-align: center;
+  padding-top:3vh;
+  border-radius:10px;
+  color:#FFFFFF;
+  margin-left: 13vw;
 }
-.header_home{
-  width: 100vw;
-  height: 10.5vh;
-  background-image: url(assets/imagesIcon/HomeMobile.png);
-  background-size: 100% 100%;
-  display: flex;
-}
-.logo_mobile{
-  width: 19vw;
-  height:9vh ;
-  padding-left: 5vw;
-  padding-top: 1.3vh;
-}
-.logo_name{
-  width: 51vw;
+.buttonOut{
+  color:#0C244F;
+  width: 28vw;   
   height: 6vh;
-  margin-left: 8vw;
-  background-color: rgba(255, 255, 255, 0.438);
-  padding: 0.5vh 5vw 1vh 5vw;
-  margin-top: 2.3vh;
-  border-radius: 30px;
-}
-.logo_sigOut{
-  width: 10vw;
-  height: 5.5vh;
-  margin-left: 9vw;
-  margin-top: 2.8vh;
-}
-.mobile_nav{
-  margin-top: 80vh;
-  width: 100vw;
-  height: 10vh;
-  background-image: url(assets/imagesIcon/HomeMobile.png);
-  background-size: 100% 100%;
-  display: flex;
-  list-style: none;
-  justify-content: space-between;
-}
-.logo_mobileNav{
-  width: 10vw;
-  height: 5.5vh;
-  margin:12vw;
-  margin-top: 2.2vh;
-}
-.desk_nav{
-  display: none;
+  border-radius:10px;
+  font-family:'Roboto', sans-serif;
+  font-weight: 600;
+  margin:0 0.5em;
 }
 @media (min-width: 1200px) {
 
@@ -673,5 +648,29 @@ button.buttonInicioGoogle:hover{
   width: 3vw;
   height:6vh;
   margin: 7vh 1.5vw 0 4vw ;
+}
+.popUpSignOut{
+  width: 25vw;
+  height: 23vh;
+  background:#0C244F;
+  Z-index:150;
+  font-family:'Roboto', sans-serif;
+  font-weight: 600;
+  position: relative;
+  margin-top: 35vh;
+  text-align: center;
+  padding-top:3vh;
+  border-radius:10px;
+  color:#FFFFFF;
+  margin-left: 45vw;
+}
+.buttonOut{
+  color:#0C244F;
+  width: 8vw;   
+  height: 6vh;
+  border-radius:10px;
+  font-family:'Roboto', sans-serif;
+  font-weight: 600;
+  margin:0 0.5em;
 }
 }
