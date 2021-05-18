@@ -59,9 +59,9 @@ export function AllPostsCard(containerPosts, docID, username, location, descript
     });
     
     permise.pop();
-    //console.log(permise);
+    // console.log(nodes.length);
     //imageLike = imageLike.slice(0,5);
-    //console.log(imageLike)
+    // console.log(imageLike)
 }
 
 function showPopUp(eventTarget, postID){

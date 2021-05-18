@@ -1,4 +1,5 @@
 import { paintAllPosts } from '../controls/firestore.js';
+import { AllPostsCard } from '../views/allPosts.js';
 
 export function RetrieveData(containerPosts, permise, imageLike){
     const db = firebase.firestore(); 
@@ -15,6 +16,27 @@ export function RetrieveData(containerPosts, permise, imageLike){
                 paintAllPosts(containerPosts, docID, username, UID, location, description, likes, permise, imageLike);
             });  
         });
+}
+
+export function retrieveUserPosts(postContainer, name, permise, imageLike){
+    const db = firebase.firestore();
+    db.collection("posts").where("userName", "==", name)
+    .get()
+    .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            const docID = doc.id;
+            const username = doc.data().userName;
+            const UID = doc.data().UID;
+            const location = doc.data().location;
+            const description = doc.data().description;
+            const likes = doc.data().likes;
+            const ownPost = true;
+            AllPostsCard(postContainer, docID, username, location, description, likes, permise, ownPost, imageLike);
+        });
+    })
+    .catch((error) => {
+        console.log("Error getting documents: ", error);
+    });
 }
 
 export function sendData(db, location, description, uid, name, date){

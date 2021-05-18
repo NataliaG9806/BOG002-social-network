@@ -1,6 +1,5 @@
-export function profile() {
-    const container = `
-        
+export function profile(containerPosts, name) {
+  const profile = `
   <style>
 
   .profileUser{
@@ -19,7 +18,7 @@ export function profile() {
     }
   .nameUs{
     color:#06004B;
-    margin: 2vh 0 0 31vw;
+    margin: 5vw 20vw;
   }
   .curiosity{
     width: 75vw;
@@ -122,10 +121,10 @@ export function profile() {
 
   </style>
 
-  <section class="profileUser">
+  <section class="profileUser" id="profileUser">
   <img class="imageProfile" src="assets/imagesIcon/UserBlueC.png">
-  <p class="nameUs">"Nombre Usuario"</p>
-  <p class="titleProfileDesk">Tu informacion</p>
+  <p class="nameUs">${name}</p>
+  <p class="titleProfileDesk">Tu información</p>
   <div class="curiosity">
   <p class="textAd">Intereses</p>
   <textarea class="listUser" rows="10" cols="50" type="text"></textarea>
@@ -134,8 +133,8 @@ export function profile() {
   <p class="textAd">Lugares visitados</p>
   <textarea class="listUser" rows="10" cols="50" type="text"></textarea>
   </div>
-  <p class="titleProfile">Tus Post</p>
-
+  <p class="titleProfile">Tus Posts</p>
   </section>`;
-    return container;
+  
+  containerPosts.innerHTML += profile;
   }

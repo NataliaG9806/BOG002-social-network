@@ -40,7 +40,7 @@ template.innerHTML = `
 </style>
 
 <nav class="desk_nav">
-<img class="logo_desk" src="assets/imagesIcon/Complete_logo.png">
+<img class="logo_desk" id="logo_desk" src="assets/imagesIcon/Complete_logo.png">
 <li ><a id="homeP" href="#home"><img class="logo_Nav" id="home_btn" src="assets/imagesIcon/HomeWhiteV.png">Home</a></li>
 <li ><a id="postP" href="#post"><img class="logo_Nav" id="post_btn" src="assets/imagesIcon/EditWhiteV.png">Publicar</a></li>
 <li><a href="#profile" id="profileP"><img class="logo_Nav" id="profile_btn" src="assets/imagesIcon/UserWhiteV.png">Mi perfil</a></li>
@@ -61,16 +61,18 @@ class DesktopMenu extends HTMLElement {
     const imgHome = this.shadowRoot.getElementById('home_btn');
     const imgPost = this.shadowRoot.getElementById('post_btn');
     const imgProfile = this.shadowRoot.getElementById('profile_btn');
+    const imglogoUser = this.shadowRoot.getElementById('logo_desk');
 
     switch (this.hash) {
       case 'home':
         imgHome.setAttribute('src', 'assets/imagesIcon/HomeWhiteC.png');
         break;
       case 'post':
-        imgPost.setAttribute('src', 'assets/imagesIcon/EditWhiteC.png')
+        imgPost.setAttribute('src', 'assets/imagesIcon/EditWhiteC.png');
           break;
       case 'profile':
-        imgProfile.setAttribute('src', 'assets/imagesIcon/UserWhiteC.png')
+        imgProfile.setAttribute('src', 'assets/imagesIcon/UserWhiteC.png');
+        imglogoUser.setAttribute('src', 'assets/imagesIcon/UserWhiteV.png');
         break;
       default:
         // renderError($containerGeneral);
