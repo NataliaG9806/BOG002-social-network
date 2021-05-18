@@ -49,18 +49,19 @@ export function AllPostsCard(containerPosts, docID, username, location, descript
                 imageLike[index] = "assets/imagesIcon/LikeBlueC.png";
                 
             }else{
-                parsedLikes--;
-                permise[index] = true;
-                imageLike[index] = "assets/imagesIcon/LikeBlueV.png";
+                    parsedLikes--;
+                    parsedLikes= Math.abs(parsedLikes);
+                    permise[index] = true;
+                    imageLike[index] = "assets/imagesIcon/LikeBlueV.png";
             }
             updateLikes(postSelected, parsedLikes);
         }); 
     });
     
     permise.pop();
-    console.log(nodes.length);
+    //console.log(permise);
     //imageLike = imageLike.slice(0,5);
-    console.log(imageLike)
+    //console.log(imageLike)
 }
 
 function showPopUp(eventTarget, postID){
