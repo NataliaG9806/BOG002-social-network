@@ -16,7 +16,7 @@ export function router(hash, $containerGeneral, name, permise, imageLike) {
         renderPost($containerGeneral, name);
         break;
     case 'profile':
-      renderProfile($containerGeneral);
+      renderProfile($containerGeneral, permise, imageLike);
       break;
     default:
       renderError($containerGeneral);

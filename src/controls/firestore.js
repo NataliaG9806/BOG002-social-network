@@ -1,5 +1,6 @@
-import { sendData } from '../firestore/firestoreData.js';
+import { sendData, retrieveUserPosts } from '../firestore/firestoreData.js';
 import { AllPostsCard } from '../views/allPosts.js';
+import { profile } from '../views/profile.js';
 let name, email, photoUrl, uid, emailVerified, date; 
 
 export function createPost() {
@@ -25,6 +26,12 @@ export function paintAllPosts(containerPosts, docID, username, UID, location, de
     ownPost = false;
   }
   AllPostsCard(containerPosts, docID, username, location, description, likes, permise, ownPost, imageLike);
+}
+
+export function retrieveUID(postContainer, permise, imageLike){
+  retrieveUserData();
+  profile(postContainer, name);
+  retrieveUserPosts(postContainer, name, permise, imageLike);
 }
 
 function retrieveUserData(){

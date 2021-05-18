@@ -9,11 +9,12 @@ import { LogInGoogle } from '../controls/LogIn.js';
 import { RetrieveData } from '../firestore/firestoreData.js'
 import { HomeDesktop } from '../views/homeDesktop.js';
 import { HomeMobile } from '../views/homeMobile.js';
+import { profileimages } from '../components/profileimages.js';
+import { cargaimages } from '../profile/imagenes.js';
 import { createPostCard } from '../views/createPost.js';
-import { profile } from '../views/profile.js';
 import { pageError } from '../views/error.js';
 import { editPostCard } from '../views/editPost.js';
-import { createPost } from '../controls/firestore.js';
+import { createPost, retrieveUID } from '../controls/firestore.js';
 import '../components/menu-mobile.js';
 import '../components/menu-desktop.js';
 import '../components/post-card.js';
@@ -48,9 +49,13 @@ export function renderPost($containerGeneral, name){
   document.querySelector(".post_button").addEventListener('click', createPost);
 }
 
-export function renderProfile($containerGeneral){
+export function renderProfile($containerGeneral, permise, imageLike){
   Menu($containerGeneral);
-  document.querySelector('.body_container').innerHTML += profile();
+  const postContainer = document.querySelector('.body_container')
+  // postContainer.innerHTML += profile();
+  retrieveUID(postContainer, permise, imageLike);
+  document.querySelector('.profileUser').innerHTML += profileimages();
+  cargaimages();
 }
 
 export function renderError($containerGeneral){

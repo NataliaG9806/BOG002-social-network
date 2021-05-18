@@ -5,9 +5,7 @@ template.innerHTML = `
 .post-card{
     background: #fffbdb;
     width: 90vw;
-    height: 38vh;
-    margin-left:5vw;
-    margin-top: 10vh;
+    margin: 5vw;
     border-radius: 5px; 
     font-family:'Roboto', sans-serif;
     font-weight: 500;
