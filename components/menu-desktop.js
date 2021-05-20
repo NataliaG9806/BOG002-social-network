@@ -14,6 +14,7 @@ template.innerHTML = `
   list-style: none;
   align-items: space-between;
   flex-direction: column;
+  position:fixed;
 }
 .desk_nav a{
   text-decoration: none;
@@ -34,26 +35,18 @@ template.innerHTML = `
   height:6vh;
   margin: 7vh 1.5vw 0 4vw ;
 }
-.body_container{
-  width: 100vw;
-  height: 100%;
-  position: absolute;
-  background-repeat: no-repeat;
-  background-size: 32% 100%;
-  background-position: right;
-  justify-content: center;
-  }
+
 }
 </style>
-<section class="body_container">
+
 <nav class="desk_nav">
-<img class="logo_desk" src="assets/imagesIcon/Complete_logo.png">
+<img class="logo_desk" id="logo_desk" src="assets/imagesIcon/Complete_logo.png">
 <li ><a id="homeP" href="#home"><img class="logo_Nav" id="home_btn" src="assets/imagesIcon/HomeWhiteV.png">Home</a></li>
 <li ><a id="postP" href="#post"><img class="logo_Nav" id="post_btn" src="assets/imagesIcon/EditWhiteV.png">Publicar</a></li>
 <li><a href="#profile" id="profileP"><img class="logo_Nav" id="profile_btn" src="assets/imagesIcon/UserWhiteV.png">Mi perfil</a></li>
 <li ><a id="logOutP"><img class="logo_Nav" id="exit_btn" src="assets/imagesIcon/CloseWhiteV.png">Cerrar sesión</a></li>
 </nav>
-</section>
+
 `;
 
 class DesktopMenu extends HTMLElement {
@@ -68,16 +61,18 @@ class DesktopMenu extends HTMLElement {
     const imgHome = this.shadowRoot.getElementById('home_btn');
     const imgPost = this.shadowRoot.getElementById('post_btn');
     const imgProfile = this.shadowRoot.getElementById('profile_btn');
+    const imglogoUser = this.shadowRoot.getElementById('logo_desk');
 
     switch (this.hash) {
       case 'home':
         imgHome.setAttribute('src', 'assets/imagesIcon/HomeWhiteC.png');
         break;
       case 'post':
-        imgPost.setAttribute('src', 'assets/imagesIcon/EditWhiteC.png')
+        imgPost.setAttribute('src', 'assets/imagesIcon/EditWhiteC.png');
           break;
       case 'profile':
-        imgProfile.setAttribute('src', 'assets/imagesIcon/UserWhiteC.png')
+        imgProfile.setAttribute('src', 'assets/imagesIcon/UserWhiteC.png');
+        imglogoUser.setAttribute('src', 'assets/imagesIcon/UserWhiteV.png');
         break;
       default:
         // renderError($containerGeneral);

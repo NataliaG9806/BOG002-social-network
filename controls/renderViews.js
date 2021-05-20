@@ -2,14 +2,19 @@ import { renderFormRegister } from '../views/RegisterForm.js';
 import { renderFormLogin } from '../views/LogInForm.js';
 import { gridImage } from '../components/image-grid.js';
 import { card } from '../components/register-login_card.js';
-import { userRegistration } from './Register.js';
+import { userRegistration} from './Register.js';
 import { visibility } from '../components/visibilityPassword.js';
 import { userLogIn } from './LogIn.js';
 import { LogInGoogle } from '../controls/LogIn.js';
-import { RetrieveData } from '../controls/prueba.js'
-import { home } from '../views/home.js';
-import { post } from '../views/post.js';
-import { profile } from '../views/profile.js'
+import { RetrieveData } from '../firestore/firestoreData.js'
+import { HomeDesktop } from '../views/homeDesktop.js';
+import { HomeMobile } from '../views/homeMobile.js';
+import { profileimages } from '../components/profileimages.js';
+import { cargaimages } from '../profile/imagenes.js';
+import { createPostCard } from '../views/createPost.js';
+import { pageError } from '../views/error.js';
+import { paintAllPosts } from '../controls/firestore.js';
+import { createPost, retrieveUID } from '../controls/firestore.js';
 import '../components/menu-mobile.js';
 import '../components/menu-desktop.js';
 import '../components/post-card.js';
@@ -32,54 +37,55 @@ export function renderLogin($containerGeneral) {
 }
 
 export function renderRegister($containerGeneral) {
+  console.log("register");
   gridAndCard($containerGeneral).innerHTML += renderFormRegister();
   document.querySelector('.formRegister').addEventListener('submit', userRegistration);
   visibility();
 }
 
-export function renderHome($containerGeneral, db){
-  const postCard = document.createElement('post-card');
+export function renderPost($containerGeneral, name){
   Menu($containerGeneral);
-  $containerGeneral.appendChild(postCard);
-  console.log("home");
-  // RetrieveData(db);
-  home();
+  document.querySelector('.body_container').innerHTML += createPostCard(name); 
+  document.querySelector(".post_button").addEventListener('click', createPost);
 }
 
-export function renderPost($containerGeneral){
+export function renderProfile($containerGeneral, permise, imageLike){
   Menu($containerGeneral);
-  console.log("post");
-  post();
-}
-export function renderProfile($containerGeneral){
-  Menu($containerGeneral);
-  console.log("profile");
-  profile();
+  const postContainer = document.querySelector('.body_container')
+  // postContainer.innerHTML += profile();
+  retrieveUID(postContainer, permise, imageLike);
+  document.querySelector('.profileUser').innerHTML += profileimages();
+  cargaimages();
 }
 
 export function renderError($containerGeneral){
-  $containerGeneral.innerHTML = "Página no encontrada";
+  pageError($containerGeneral);
 }
 
+export async function renderHome($containerGeneral, permise, imageLike){
+  Menu($containerGeneral);
+  const containerPosts = document.createElement('div');
+  containerPosts.classList.add("containerPosts");
+  document.querySelector('.body_container').appendChild(containerPosts);
+  containerPosts.innerHTML='';
+  RetrieveData(paintAllPosts, containerPosts, permise, imageLike);
+}
 
-function Menu($containerGeneral) {
+export function Menu($containerGeneral) {
   const mql = window.matchMedia('(max-width: 768px)');
-  const desktop = document.createElement('desktop-menu');
-  const mobile = document.createElement('mobile-menu');
-  function pantalla(mobileView, value) {
+  function pantalla(mobileView) {
     if (mobileView) {
-      if (value) $containerGeneral.removeChild(desktop);
-      // console.log("pantalla pequeña");
-      $containerGeneral.insertAdjacentElement('afterbegin', mobile);    
+      $containerGeneral.innerHTML= HomeMobile();    
     } else {
-      if (value) $containerGeneral.removeChild(mobile);
-      $containerGeneral.insertAdjacentElement('afterbegin', desktop);
+      $containerGeneral.innerHTML= HomeDesktop();
     }
   }
   mql.addEventListener('change', (e) => {
     const mobileView = e.matches;
-    pantalla(mobileView, true);
+    pantalla(mobileView);
+    location.reload();
   });
   const mobileView = mql.matches;
-  pantalla(mobileView, false);
+  pantalla(mobileView);
 }
+

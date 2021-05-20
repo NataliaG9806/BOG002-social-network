@@ -1,7 +1,6 @@
-import { renderLogin, renderRegister, renderHome, renderProfile, renderPost} from './renderViews.js';
+import { renderLogin, renderRegister, renderHome, renderProfile, renderPost, renderError} from './renderViews.js';
 
-export function router(hash, $containerGeneral, db) {
-  
+export function router(hash, $containerGeneral, name, permise, imageLike) {
   
   switch (hash) {
     case '':
@@ -11,16 +10,16 @@ export function router(hash, $containerGeneral, db) {
       renderRegister($containerGeneral);
       break;
     case 'home':
-      renderHome($containerGeneral, db);
+      renderHome($containerGeneral, permise, imageLike);
       break;
     case 'post':
-        renderPost($containerGeneral);
+        renderPost($containerGeneral, name);
         break;
     case 'profile':
-      renderProfile($containerGeneral);
+      renderProfile($containerGeneral, permise, imageLike);
       break;
     default:
-      // renderError($containerGeneral);
+      renderError($containerGeneral);
       break;
   }
 }

@@ -12,40 +12,22 @@ template.innerHTML = `
         display: flex;
         justify-content: space-around;
         align-items: center;
-        // padding: 0.5rem;
         margin:0;
       }
       .logo_mobile{
         width: 11vw;
-        // height:9vh ;
-        // padding-left: 5vw;
-        // padding-top: 1.3vh;
       }
       .logo_name{
-        // width: 51vw;
         height: 5vh;
-        // margin-left: 8vw;
         background-color: rgba(255, 255, 255, 0.438);
         padding: 0.5vh 5vw 1vh 5vw;
-        // margin-top: 2.3vh;
         border-radius: 30px;
       }
       .logo_signOut{
         width: 10vw;
-        // height: 5.5vh;
-        // margin-left: 9vw;
         margin-top: 1.5vh;
       }
-      .body_container{
-        width: 100vw;
-        height: 80vh;
-        position: absolute;
-        background-image: url(assets/imagesIcon/texturamobile.png);
-        background-repeat: no-repeat;
-        background-size: 77% 100%;
-        background-position: right;
-        margin: auto 0;
-      }
+      
       .mobile_nav{
         margin: auto 0;
         width: 100vw;
@@ -70,10 +52,6 @@ template.innerHTML = `
         align-items: center;
       }
 
-      .body_container{
-        background-image: url(assets/imagesIcon/texturamobile.png);
-      }
-
       @media (min-width: 768px) {
         .logo_sigOut {
             width: 6vw;    
@@ -92,8 +70,6 @@ template.innerHTML = `
     <img class="logo_name" src="assets/imagesIcon/Title_nomadas.png">
     <a id="signOutContainer"><img class="logo_signOut" src="assets/imagesIcon/CloseWhiteV.png"></a>
     </header>
-    <section class="body_container">
-    </section>
     <footer class="mobile_nav">
     <li class="list"><a href="#home" id="homeP"><img class="logo_mobileNav" id="imgHome" src="assets/imagesIcon/HomeWhiteV.png"></a></li>
     <li class="list"><a href="#post" id="postP"><img class="logo_mobileNav" id="imgPost" src="assets/imagesIcon/EditWhiteV.png"></a></li>
